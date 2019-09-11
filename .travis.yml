@@ -1,0 +1,22 @@
+language: python
+python:
+- 3.6
+
+install:
+- pip install notebook
+
+script:
+- echo "Be excellent to each other!"
+- python -m nbconvert --to html how_to_use.ipynb
+
+# Aight, this is definitively how you do these encrypted keys: `sudo apt install ruby ruby-dev libz-dev`,
+# `gem install travis`, make sure you're in a folder with a .travis.yml, `travis encrypt thekey123456abcde`, and put
+# the result under the thing it's supposed to represent. No VARIABLE=key, no worrying about capitalization or other
+# command line flags, no putting the raw key in here lest github sniff it out and delete your token.
+deploy:
+  provider: pages
+  github_token:
+    secure: "B6C12p8gaOahDCt+4XWYsIBvcPbYbIWk2qs6GElJKyzSDXD7ASNMOb9scpqZhSmgRPNMe+AOjp5ujUqYQZ6CXM+7DoaAMe1ONh6Q955FvmzlpR7zJWypBQ1DizNKhaatwlwWjzZX8sDvB5S98bc+TtRjW3SS7NCCHYeJTRJ87BQ8uSmWgAvrVkAxbw8OwJmOwxr5Sg+RgVIro0YFuEVAv/mqclKmTYO0aCxMNra7hcfW5kLPIqZZrZWIC1ydhTEKRrmcdJKFr0lKVyRHHVRRtbIm1xuUYdcu2uz0+V80mtMz8Zc1Kd4qRqJ0pMdk/1xqA/FneJbazi24XSMrTktbFZkgNYpBkOyG0Fqqo6WaEkP09jVGipzlam1adVK5BFW9litj6T81+Vr+6beptQTVupO/ABSYildJAOgfkEiWV/E7bNmTZIczJ4a14VxClAx55EqzJJ3KbP9se3lqt5e5hBy4Jv26/J++jfCUQ+r4IMGXsazMmNu3WBofDTkyvWaHzZ5bDMYdeupypawdtsIl/SBvN5u1IqIA5Ts48WjIcXRiZrSaY5B2Y3vXwiPUCWOKm2mspTKDYzUrCTZ4AsoR6680vfFMLfG664jp1JO9OAjVmOIUXzfDbG8ho9ih3Gll2BgFfSFBipqK5GKzCibqd5K0/LmOjlad5knqBSuada0="
+  skip_cleanup: true # https://docs.travis-ci.com/user/deployment/pages/
+  on:
+    branch: master
