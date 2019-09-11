@@ -1,13 +1,5 @@
-language: python
-python:
-- 3.6
-
-install:
-- pip install notebook
-
 script:
 - echo "Be excellent to each other!"
-- python -m nbconvert --to html how_to_use.ipynb
 
 # Aight, this is definitively how you do these encrypted keys: `sudo apt install ruby ruby-dev libz-dev`,
 # `gem install travis`, make sure you're in a folder with a .travis.yml, `travis encrypt thekey123456abcde`, and put
